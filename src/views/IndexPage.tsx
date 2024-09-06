@@ -1,5 +1,6 @@
 import { useMemo } from "react"
 import { useAppStore } from "../stores/useAppStore"
+import { DrinkCard } from "../components/DrinkCard"
 
 export const IndexPage = () => {
 
@@ -11,16 +12,11 @@ export const IndexPage = () => {
     <>
         <h1 className="text-6xl font-extrabold">Inicio</h1>
         {hasDrinks ? (
-          <>
+          <div className="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 my-10 gap-10">
             {drinks.drinks.map((drink) => (
-              <div key={drink.idDrink} className="flex gap-4 my-4">
-                <img className="w-32 h-32 object-cover" src={drink.strDrinkThumb} alt={drink.strDrink} />
-                <div>
-                  <h2 className="text-2xl font-bold">{drink.strDrink}</h2>
-                </div>
-              </div>
+              <DrinkCard key={drink.idDrink} drink={drink} />
             ))}
-          </>
+          </div>
           ): (
             <p className="my-10 text-center text-2xl">
               No hay bebidas aun utiliza el formulario para buscar bebidas
